@@ -4,13 +4,27 @@ export type FontFamilyChoice = 'sans' | 'serif' | 'mono';
 
 export type LetterSpacingChoice = 'normal' | 'wide' | 'wider';
 
+export type AgeGroup = 'Semua Usia' | '4–6 Tahun' | '7–9 Tahun' | '10–12 Tahun';
+
 export type BookCategory =
   | 'Semua'
-  | 'Sastra & Fiksi'
-  | 'Sains & Teknologi'
-  | 'Arsitektur & Ruang'
-  | 'Seni & Budaya'
-  | 'Panduan Aksesibilitas';
+  | 'Fabel & Dongeng'
+  | 'Sains Anak'
+  | 'Persahabatan & Inklusi'
+  | 'Alam & Nusantara'
+  | 'Kreativitas & Seni';
+
+export interface GlossaryWord {
+  word: string;
+  meaning: string;
+}
+
+export interface ChapterQuestion {
+  prompt: string;
+  options: string[];
+  correctIndex: number;
+  explanation: string;
+}
 
 export interface Chapter {
   id: string;
@@ -19,6 +33,8 @@ export interface Chapter {
   summary: string;
   paragraphs: string[];
   marginNote?: string;
+  glossary?: GlossaryWord[];
+  question?: ChapterQuestion;
 }
 
 export interface Book {
@@ -29,6 +45,7 @@ export interface Book {
   author: string;
   narrator: string;
   category: Exclude<BookCategory, 'Semua'>;
+  ageGroup: Exclude<AgeGroup, 'Semua Usia'>;
   year: number;
   language: string;
   readingMinutes: number;
@@ -56,6 +73,7 @@ export interface ReadingProgressMap {
   [bookId: string]: {
     chapterIndex: number;
     sentenceIndex: number;
+    completed?: boolean;
     updatedAt: string;
   };
 }
@@ -78,14 +96,14 @@ export interface AccessibilitySettings {
 export const DEFAULT_ACCESSIBILITY_SETTINGS: AccessibilitySettings = {
   theme: 'paper',
   fontFamily: 'sans',
-  fontSizePx: 19,
-  lineHeight: 1.75,
+  fontSizePx: 20,
+  lineHeight: 1.85,
   letterSpacing: 'normal',
   screenReaderAutoSpeak: false,
   highlightSpokenSentence: true,
   readingRuler: false,
   reduceMotion: false,
-  speechRate: 1.0,
+  speechRate: 0.95,
   speechPitch: 1.0,
   preferredVoiceURI: '',
 };

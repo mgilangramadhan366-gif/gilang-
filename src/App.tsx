@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   BookOpen,
   Bookmark,
+  CheckCircle2,
   Headphones,
   Menu,
   Search,
@@ -13,6 +14,7 @@ import {
 import { HERO_LIBRARY_IMAGE, LIBRARY_BOOKS } from './data/books';
 import {
   AccessibilitySettings,
+  AgeGroup,
   Book,
   BookCategory,
   BookmarkItem,
@@ -27,19 +29,26 @@ import { ShortcutsModal } from './components/ShortcutsModal';
 
 type ActiveView = 'catalog' | 'reader' | 'bookmarks';
 
+const AGE_GROUPS: AgeGroup[] = [
+  'Semua Usia',
+  '4–6 Tahun',
+  '7–9 Tahun',
+  '10–12 Tahun',
+];
+
 const CATEGORIES: BookCategory[] = [
   'Semua',
-  'Sastra & Fiksi',
-  'Sains & Teknologi',
-  'Arsitektur & Ruang',
-  'Seni & Budaya',
-  'Panduan Aksesibilitas',
+  'Fabel & Dongeng',
+  'Sains Anak',
+  'Persahabatan & Inklusi',
+  'Alam & Nusantara',
+  'Kreativitas & Seni',
 ];
 
 const STORAGE_KEYS = {
-  settings: 'pustaka_inklusi_settings_v1',
-  bookmarks: 'pustaka_inklusi_bookmarks_v1',
-  progress: 'pustaka_inklusi_progress_v1',
+  settings: 'pustaka_inklusi_settings_v2',
+  bookmarks: 'pustaka_inklusi_bookmarks_v2',
+  progress: 'pustaka_inklusi_progress_v2',
 };
 
 function loadFromStorage<T>(key: string, fallback: T): T {
@@ -84,6 +93,7 @@ export default function App() {
   }>({ chapterIndex: 0, sentenceIndex: 0 });
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeAgeGroup, setActiveAgeGroup] = useState<AgeGroup>('Semua Usia');
   const [activeCategory, setActiveCategory] = useState<BookCategory>('Semua');
   const [isAccessibilityOpen, setIsAccessibilityOpen] = useState(false);
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
@@ -187,6 +197,7 @@ export default function App() {
         return {
           ...prev,
           [bookId]: {
+            ...existing,
             chapterIndex,
             sentenceIndex,
             updatedAt: new Date().toISOString(),
@@ -196,6 +207,21 @@ export default function App() {
     },
     []
   );
+
+  const handleMarkCompleted = useCallback((bookId: string) => {
+    setProgressMap((prev) => {
+      const existing = prev[bookId];
+      return {
+        ...prev,
+        [bookId]: {
+          chapterIndex: existing?.chapterIndex ?? 0,
+          sentenceIndex: existing?.sentenceIndex ?? 0,
+          completed: true,
+          updatedAt: new Date().toISOString(),
+        },
+      };
+    });
+  }, []);
 
   const handleToggleBookmark = useCallback(
     (item: Omit<BookmarkItem, 'id' | 'createdAt'>) => {
@@ -243,7 +269,7 @@ export default function App() {
         behavior: settings.reduceMotion ? 'auto' : 'smooth',
       });
       announce(
-        `Membuka buku ${book.title} oleh ${book.author}, Bab ${nextChapter + 1}.`
+        `Membuka cerita ${book.title} karya ${book.author}, Bab ${nextChapter + 1}.`
       );
     },
     [progressMap, settings.reduceMotion, announce]
@@ -269,7 +295,7 @@ export default function App() {
         requestAnimationFrame(() => {
           searchInputRef.current?.focus();
         });
-        announce('Fokus dipindahkan ke kotak pencarian buku.');
+        announce('Fokus dipindahkan ke kotak pencarian cerita.');
       } else if (e.key === '?') {
         e.preventDefault();
         setIsShortcutsOpen((prev) => !prev);
@@ -281,7 +307,7 @@ export default function App() {
         announce(
           nextTheme === 'high-contrast'
             ? 'Mode Kontras Ekstrem AAA diaktifkan.'
-            : 'Tema kembali ke Kertas Arsip.'
+            : 'Tema kembali ke Kertas Cerita.'
         );
       } else if (e.key.toLowerCase() === 'a') {
         e.preventDefault();
@@ -296,9 +322,11 @@ export default function App() {
   const filteredBooks = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     return LIBRARY_BOOKS.filter((book) => {
+      const matchesAge =
+        activeAgeGroup === 'Semua Usia' || book.ageGroup === activeAgeGroup;
       const matchesCat =
         activeCategory === 'Semua' || book.category === activeCategory;
-      if (!matchesCat) return false;
+      if (!matchesAge || !matchesCat) return false;
       if (!q) return true;
       return (
         book.title.toLowerCase().includes(q) ||
@@ -307,7 +335,7 @@ export default function App() {
         book.category.toLowerCase().includes(q)
       );
     });
-  }, [searchQuery, activeCategory]);
+  }, [searchQuery, activeAgeGroup, activeCategory]);
 
   const activeBook = useMemo(
     () =>
@@ -315,13 +343,18 @@ export default function App() {
     [selectedBookId]
   );
 
+  const completedBooks = useMemo(
+    () => LIBRARY_BOOKS.filter((b) => progressMap[b.id]?.completed),
+    [progressMap]
+  );
+
   const navigateTo = (view: ActiveView) => {
     setActiveView(view);
     setIsMobileMenuOpen(false);
     const labelMap: Record<ActiveView, string> = {
-      catalog: 'Halaman Katalog Pustaka Inklusi',
+      catalog: 'Halaman Katalog Cerita Anak Pustaka Inklusi',
       reader: `Ruang Baca ${activeBook.title}`,
-      bookmarks: `Daftar Penanda Halaman, ${bookmarks.length} tersimpan`,
+      bookmarks: `Jejak Bacaan dan Penanda Halaman, ${bookmarks.length} penanda tersimpan`,
     };
     announce(labelMap[view]);
     mainContentRef.current?.focus();
@@ -341,7 +374,7 @@ export default function App() {
         }}
         className="skip-link"
       >
-        Lompat ke Pencarian Buku
+        Lompat ke Pencarian Cerita
       </a>
 
       {/* ARIA Live Announcement Region */}
@@ -461,7 +494,7 @@ export default function App() {
                 onClick={() => navigateTo('catalog')}
                 className="min-h-[44px] rounded-lg px-3 py-2 text-left text-sm font-semibold hover:bg-[var(--bg-subtle)]"
               >
-                Katalog Buku
+                Katalog Cerita Anak
               </button>
               <button
                 type="button"
@@ -475,7 +508,7 @@ export default function App() {
                 onClick={() => navigateTo('bookmarks')}
                 className="min-h-[44px] rounded-lg px-3 py-2 text-left text-sm font-semibold hover:bg-[var(--bg-subtle)]"
               >
-                Penanda Tersimpan ({bookmarks.length})
+                Jejak &amp; Penanda ({bookmarks.length})
               </button>
               <button
                 type="button"
@@ -496,7 +529,7 @@ export default function App() {
       <main id="main-content" ref={mainContentRef} tabIndex={-1}>
         {activeView === 'catalog' && (
           <>
-            {/* Editorial Marquee Hero */}
+            {/* Editorial Storybook Hero */}
             <section
               aria-labelledby="hero-title"
               className="border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)]"
@@ -507,22 +540,22 @@ export default function App() {
                   <div className="flex flex-col justify-between lg:col-span-7">
                     <div>
                       <p className="text-xs font-semibold tracking-widest uppercase text-[var(--text-muted)]">
-                        Perpustakaan Digital Terbuka · Standar Aksesibilitas
-                        WCAG AAA
+                        Perpustakaan Digital Ramah Anak · Usia 4–12 Tahun ·
+                        Standar Inklusi
                       </p>
 
                       <h1
                         id="hero-title"
                         className="font-display mt-4 text-4xl leading-tight font-semibold text-balance sm:text-5xl"
                       >
-                        Membaca dan Mendengar Tanpa Batas Indera
+                        Dunia Cerita Hangat yang Ramah untuk Semua Anak
                       </h1>
 
                       <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[var(--text-secondary)]">
-                        Koleksi bacaan terstruktur yang dirancang khusus bagi
-                        sahabat tunanetra, pembaca low-vision, penyandang
-                        disleksia, dan pembelajar audio dengan pembaca layar
-                        terintegrasi langsung di setiap halaman.
+                        Dongeng fabel, petualangan sains, dan kisah persahabatan
+                        untuk anak usia 4–12 tahun—lengkap dengan pembaca layar
+                        suara lembut, kamus kata baru bersuara, huruf ramah
+                        disleksia, dan panduan belajar yang aman.
                       </p>
                     </div>
 
@@ -533,7 +566,7 @@ export default function App() {
                         className="inline-flex min-h-[48px] items-center gap-2.5 rounded-lg bg-[var(--accent-primary)] px-6 py-3 text-base font-bold text-[var(--accent-contrast-text)] hover:bg-[var(--accent-primary-hover)] whitespace-nowrap shrink-0"
                       >
                         <Headphones className="h-5 w-5" aria-hidden="true" />
-                        <span>Mulai Baca &amp; Dengar</span>
+                        <span>Mulai Baca &amp; Dengar Cerita</span>
                       </button>
 
                       <button
@@ -544,7 +577,7 @@ export default function App() {
                           updateSettings({ screenReaderAutoSpeak: next });
                           if (next) {
                             speech.speakUI(
-                              'Mode narasi otomatis pembaca layar aktif. Semua perpindahan halaman dan pencarian akan dibacakan.',
+                              'Halo! Mode pembaca layar ramah anak sudah aktif. Setiap halaman dan tombol akan dibacakan dengan jelas.',
                               settings.speechRate,
                               settings.speechPitch,
                               settings.preferredVoiceURI
@@ -568,7 +601,7 @@ export default function App() {
                         <span>
                           {settings.screenReaderAutoSpeak
                             ? 'Pembaca Layar Aktif'
-                            : 'Aktifkan Suara Antarmuka'}
+                            : 'Aktifkan Suara Pemandu'}
                         </span>
                       </button>
                     </div>
@@ -580,7 +613,7 @@ export default function App() {
                       {!heroImageError ? (
                         <img
                           src={HERO_LIBRARY_IMAGE}
-                          alt="Meja baca kayu ek di perpustakaan inklusif bermandikan cahaya pagi, menampilkan buku huruf Braille terbuka dan kacamata baca."
+                          alt="Sudut baca perpustakaan anak yang hangat dan bermandikan sinar matahari pagi, dua anak sedang membaca buku cerita bergambar dan buku huruf timbul bersama."
                           referrerPolicy="no-referrer"
                           onError={() => setHeroImageError(true)}
                           className="h-full w-full object-cover"
@@ -592,7 +625,7 @@ export default function App() {
                             aria-hidden="true"
                           />
                           <p className="font-display text-2xl font-semibold">
-                            Ruang Baca Inklusif
+                            Pojok Baca Anak Inklusif
                           </p>
                         </div>
                       )}
@@ -600,41 +633,41 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Operational Utility Strip (Full-Width Row Below Hero Split) */}
+                {/* Operational Utility Strip */}
                 <div
-                  aria-label="Ringkasan Kemampuan Aksesibilitas"
+                  aria-label="Keunggulan Perpustakaan Ramah Anak"
                   className="mt-10 grid grid-cols-1 gap-4 border-t border-[var(--border-hairline)] pt-6 sm:grid-cols-2 lg:grid-cols-4"
                 >
                   <div>
                     <p className="font-accessible-mono tabular-nums text-sm font-bold">
-                      {LIBRARY_BOOKS.length} Koleksi Lengkap
+                      {LIBRARY_BOOKS.length} Buku Cerita Anak
                     </p>
                     <p className="mt-1 text-sm text-[var(--text-muted)]">
-                      Naskah penuh terbagi per kalimat dan bab
+                      Dikurasi aman untuk usia 4 hingga 12 tahun
                     </p>
                   </div>
                   <div>
                     <p className="text-sm font-bold">
-                      Pembaca Layar Bawaan
+                      Kamus Kata &amp; Tanya Jawab
                     </p>
                     <p className="mt-1 text-sm text-[var(--text-muted)]">
-                      Sintesis suara dengan sorot kalimat otomatis
+                      Bantu anak pahami kosakata baru dengan suara
                     </p>
                   </div>
                   <div>
                     <p className="text-sm font-bold">
-                      4 Tema Kontras &amp; Disleksia
+                      Huruf Besar &amp; Penggaris Baca
                     </p>
                     <p className="mt-1 text-sm text-[var(--text-muted)]">
-                      Huruf Hyperlegible, penggaris baca, kontras AAA
+                      Mendukung pembaca awal, disleksia, dan low-vision
                     </p>
                   </div>
                   <div>
                     <p className="text-sm font-bold">
-                      Ekspor Teks &amp; Braille
+                      Bebas Iklan &amp; Ekspor Braille
                     </p>
                     <p className="mt-1 text-sm text-[var(--text-muted)]">
-                      Unduhan .txt terstruktur dan Unicode .brf
+                      Lingkungan tenang dengan unduhan .txt &amp; .brf
                     </p>
                   </div>
                 </div>
@@ -653,11 +686,11 @@ export default function App() {
                     id="catalog-heading"
                     className="font-display text-3xl font-semibold"
                   >
-                    Katalog Bacaan Aksesibel
+                    Rak Cerita &amp; Pengetahuan Anak
                   </h2>
                   <p className="mt-1 text-base text-[var(--text-secondary)]">
-                    Pilih buku untuk membaca, mendengarkan narasi suara, atau
-                    mengunduh berkas Braille.
+                    Pilih kelompok usia atau topik cerita untuk mulai membaca
+                    dan mendengarkan bersama.
                   </p>
                 </div>
 
@@ -667,7 +700,7 @@ export default function App() {
                     htmlFor="catalog-search"
                     className="mb-1.5 block text-xs font-bold tracking-wider uppercase text-[var(--text-muted)]"
                   >
-                    Cari Judul atau Penulis (Tekan /)
+                    Cari Judul atau Topik Cerita (Tekan /)
                   </label>
                   <div className="relative flex items-center">
                     <Search
@@ -680,7 +713,7 @@ export default function App() {
                       type="search"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Ketik judul, topik, atau penulis..."
+                      placeholder="Misal: kancil, hujan, bintang..."
                       className="min-h-[48px] w-full rounded-lg border border-[var(--border-strong)] bg-[var(--bg-elevated)] pr-10 pl-10 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-muted)]"
                     />
                     {searchQuery && (
@@ -701,11 +734,43 @@ export default function App() {
                 </div>
               </div>
 
+              {/* Age Group Filter Tabs */}
+              <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div
+                  role="tablist"
+                  aria-label="Filter kelompok usia anak"
+                  className="flex flex-wrap items-center gap-2"
+                >
+                  {AGE_GROUPS.map((age) => {
+                    const active = activeAgeGroup === age;
+                    return (
+                      <button
+                        key={age}
+                        type="button"
+                        role="tab"
+                        aria-selected={active}
+                        onClick={() => {
+                          setActiveAgeGroup(age);
+                          announce(`Menampilkan buku untuk ${age}.`);
+                        }}
+                        className={`min-h-[44px] rounded-lg border px-4 py-2 text-sm font-bold transition-colors whitespace-nowrap shrink-0 ${
+                          active
+                            ? 'border-[var(--accent-primary)] bg-[var(--accent-subtle)] text-[var(--text-primary)]'
+                            : 'border-[var(--border-hairline)] bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:bg-[var(--bg-surface)]'
+                        }`}
+                      >
+                        {age}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* Category Filter Buttons */}
               <div
                 role="tablist"
-                aria-label="Filter kategori buku"
-                className="mt-6 flex flex-wrap items-center gap-2"
+                aria-label="Filter kategori cerita"
+                className="mt-3 flex flex-wrap items-center gap-2"
               >
                 {CATEGORIES.map((category) => {
                   const active = activeCategory === category;
@@ -741,29 +806,30 @@ export default function App() {
                 <span className="font-accessible-mono tabular-nums">
                   {LIBRARY_BOOKS.length}
                 </span>{' '}
-                koleksi tersedia.
+                buku cerita ramah anak.
               </p>
 
               {/* Empty State */}
               {filteredBooks.length === 0 ? (
                 <div className="mt-8 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-10 text-center">
                   <h3 className="font-display text-2xl font-semibold">
-                    Tidak ada buku yang cocok
+                    Cerita belum ditemukan
                   </h3>
                   <p className="mx-auto mt-2 max-w-md text-base text-[var(--text-secondary)]">
-                    Coba ubah kata kunci pencarian atau pilih kategori Semua
-                    untuk melihat seluruh koleksi perpustakaan.
+                    Coba ganti kata kunci pencarian, atau pilih Semua Usia dan
+                    kategori Semua untuk melihat semua buku anak.
                   </p>
                   <button
                     type="button"
                     onClick={() => {
                       setSearchQuery('');
+                      setActiveAgeGroup('Semua Usia');
                       setActiveCategory('Semua');
                       announce('Filter dan pencarian diatur ulang.');
                     }}
                     className="mt-6 min-h-[44px] rounded-lg bg-[var(--accent-primary)] px-6 py-2.5 text-sm font-bold text-[var(--accent-contrast-text)]"
                   >
-                    Tampilkan Semua Koleksi
+                    Tampilkan Semua Cerita
                   </button>
                 </div>
               ) : (
@@ -783,7 +849,7 @@ export default function App() {
                             />
                             <div className="min-w-0">
                               <p className="text-xs font-semibold tracking-wider uppercase text-[var(--text-muted)]">
-                                {book.category}
+                                {book.category} · {book.ageGroup}
                               </p>
                               <h3 className="font-display mt-1.5 text-xl leading-snug font-semibold text-balance">
                                 {book.title}
@@ -793,7 +859,7 @@ export default function App() {
                               </p>
                               <p className="font-accessible-mono tabular-nums mt-2 text-xs text-[var(--text-muted)]">
                                 {book.chapters.length} bab ·{' '}
-                                {book.audioMinutes} mnt audio
+                                {book.audioMinutes} mnt cerita
                               </p>
                             </div>
                           </div>
@@ -803,9 +869,18 @@ export default function App() {
                           </p>
 
                           {saved && (
-                            <p className="mt-3 border-t border-[var(--border-hairline)] pt-3 text-xs font-semibold text-[var(--accent-primary)]">
-                              Terakhir dibaca: Bab {saved.chapterIndex + 1},
-                              Kalimat {saved.sentenceIndex + 1}
+                            <p className="mt-3 flex items-center gap-1.5 border-t border-[var(--border-hairline)] pt-3 text-xs font-semibold text-[var(--accent-primary)]">
+                              {saved.completed && (
+                                <CheckCircle2
+                                  className="h-4 w-4 shrink-0"
+                                  aria-hidden="true"
+                                />
+                              )}
+                              <span>
+                                {saved.completed
+                                  ? 'Sudah selesai dibaca · Bisa diulang kapan saja'
+                                  : `Terakhir dibaca: Bab ${saved.chapterIndex + 1}, Kalimat ${saved.sentenceIndex + 1}`}
+                              </span>
                             </p>
                           )}
                         </div>
@@ -814,28 +889,32 @@ export default function App() {
                           <button
                             type="button"
                             onClick={() => openBook(book)}
-                            className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-lg bg-[var(--accent-primary)] px-4 py-2 text-sm font-bold text-[var(--accent-contrast-text)] hover:bg-[var(--accent-primary-hover)] whitespace-nowrap"
+                            className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-lg bg-[var(--accent-primary)] px-4 py-2 text-sm font-bold text-[var(--accent-contrast-text)] hover:bg-[var(--accent-primary-hover)] whitespace-nowrap"
                           >
                             <BookOpen className="h-4 w-4" aria-hidden="true" />
                             <span>
-                              {saved ? 'Lanjutkan Baca' : 'Baca & Dengarkan'}
+                              {saved && !saved.completed
+                                ? 'Lanjutkan Cerita'
+                                : 'Baca & Dengarkan'}
                             </span>
                           </button>
 
                           <button
                             type="button"
-                            aria-label={`Dengarkan ringkasan buku ${book.title}`}
+                            aria-label={`Dengarkan sinopsis cerita ${book.title}`}
                             onClick={() => {
-                              const text = `${book.title}, ditulis oleh ${book.author}. Kategori ${book.category}. ${book.summary}`;
+                              const text = `${book.title}, untuk usia ${book.ageGroup}, ditulis oleh ${book.author}. ${book.summary}`;
                               speech.speakUI(
                                 text,
                                 settings.speechRate,
                                 settings.speechPitch,
                                 settings.preferredVoiceURI
                               );
-                              setLiveMessage(`Membacakan ringkasan ${book.title}.`);
+                              setLiveMessage(
+                                `Membacakan ringkasan cerita ${book.title}.`
+                              );
                             }}
-                            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-[var(--border-strong)] bg-[var(--bg-surface)] px-3 py-2 text-sm font-semibold hover:bg-[var(--bg-subtle)]"
+                            className="inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-lg border border-[var(--border-strong)] bg-[var(--bg-surface)] px-3 py-2 text-sm font-semibold hover:bg-[var(--bg-subtle)]"
                           >
                             <Volume2 className="h-4 w-4" aria-hidden="true" />
                             <span className="sr-only">
@@ -857,11 +936,13 @@ export default function App() {
             book={activeBook}
             initialChapterIndex={readerJump.chapterIndex}
             initialSentenceIndex={readerJump.sentenceIndex}
+            isCompleted={Boolean(progressMap[activeBook.id]?.completed)}
             settings={settings}
             onUpdateSettings={updateSettings}
             onOpenAccessibility={() => setIsAccessibilityOpen(true)}
             onBackToCatalog={() => navigateTo('catalog')}
             onSaveProgress={handleSaveProgress}
+            onMarkCompleted={handleMarkCompleted}
             bookmarks={bookmarks}
             onToggleBookmark={handleToggleBookmark}
             speech={speech}
@@ -880,11 +961,11 @@ export default function App() {
                   id="bookmarks-heading"
                   className="font-display text-3xl font-semibold"
                 >
-                  Penanda Halaman Tersimpan
+                  Jejak Bacaan &amp; Penanda Halaman
                 </h1>
                 <p className="mt-1 text-base text-[var(--text-secondary)]">
-                  Lanjutkan bacaan dan dengarkan kembali kalimat yang pernah
-                  Anda tandai.
+                  Lihat cerita yang sudah selesai dibaca dan lanjutkan kalimat
+                  yang telah ditandai.
                 </p>
               </div>
               <button
@@ -896,6 +977,37 @@ export default function App() {
               </button>
             </div>
 
+            {/* Completed Books Summary */}
+            {completedBooks.length > 0 && (
+              <div className="mt-8 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-6">
+                <h2 className="font-display text-xl font-semibold">
+                  Cerita yang Sudah Selesai Dibaca ({completedBooks.length})
+                </h2>
+                <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {completedBooks.map((book) => (
+                    <li
+                      key={book.id}
+                      className="flex items-center justify-between gap-3 rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-elevated)] p-3.5"
+                    >
+                      <div className="min-w-0">
+                        <p className="truncate font-semibold">{book.title}</p>
+                        <p className="text-xs text-[var(--text-muted)]">
+                          {book.category} · {book.ageGroup}
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => openBook(book, 0, 0)}
+                        className="min-h-[40px] shrink-0 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-surface)] px-3 py-1.5 text-xs font-bold hover:bg-[var(--bg-subtle)]"
+                      >
+                        Baca Ulang
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {bookmarks.length === 0 ? (
               <div className="mt-8 rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-10 text-center">
                 <Bookmark
@@ -903,18 +1015,18 @@ export default function App() {
                   aria-hidden="true"
                 />
                 <h2 className="font-display mt-4 text-2xl font-semibold">
-                  Belum ada penanda tersimpan
+                  Belum ada kalimat yang ditandai
                 </h2>
                 <p className="mx-auto mt-2 max-w-md text-base text-[var(--text-secondary)]">
-                  Saat membaca buku, tekan tombol Tandai Kalimat untuk menyimpan
-                  kutipan dan posisi terakhir Anda di sini.
+                  Saat membaca cerita, tekan tombol Tandai Kalimat untuk
+                  menyimpan bagian favoritmu agar mudah dibuka kembali nanti.
                 </p>
                 <button
                   type="button"
                   onClick={() => navigateTo('catalog')}
                   className="mt-6 min-h-[44px] rounded-lg bg-[var(--accent-primary)] px-6 py-2.5 text-sm font-bold text-[var(--accent-contrast-text)]"
                 >
-                  Jelajahi Katalog Buku
+                  Pilih Cerita di Katalog
                 </button>
               </div>
             ) : (
@@ -980,8 +1092,8 @@ export default function App() {
       <footer className="mt-16 border-t border-[var(--border-hairline)] bg-[var(--bg-surface)]">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-4 py-8 text-sm text-[var(--text-muted)] sm:flex-row sm:items-center sm:px-6 lg:px-8">
           <p>
-            Pustaka Inklusi — Perpustakaan Digital Ramah Disabilitas &amp;
-            Pembaca Layar Terintegrasi.
+            Pustaka Inklusi — Perpustakaan Digital Ramah Anak &amp; Aksesibilitas
+            Tinggi.
           </p>
           <div className="flex flex-wrap items-center gap-6">
             <button
@@ -1012,7 +1124,7 @@ export default function App() {
         speechSupported={speech.supported}
         onTestVoice={() => {
           speech.speakUI(
-            'Halo, ini adalah uji suara pembaca layar Pustaka Inklusi. Kecepatan dan kejernihan suara dapat Anda sesuaikan kapan saja.',
+            'Halo! Ini adalah uji suara pembaca layar ramah anak Pustaka Inklusi. Kecepatan dan ukuran huruf bisa disesuaikan agar nyaman dibaca.',
             settings.speechRate,
             settings.speechPitch,
             settings.preferredVoiceURI
@@ -1026,7 +1138,7 @@ export default function App() {
         onClose={() => setIsShortcutsOpen(false)}
         onReadShortcuts={() => {
           speech.speakUI(
-            'Daftar pintasan papan ketik. Tekan garis miring untuk mencari buku. Tekan spasi untuk memutar atau menjeda suara di ruang baca. Tekan panah kiri atau kanan untuk berpindah kalimat. Tekan H untuk mode kontras tinggi, A untuk panel aksesibilitas, dan tanda tanya untuk bantuan ini.',
+            'Daftar pintasan papan ketik. Tekan garis miring untuk mencari cerita. Tekan spasi untuk memutar atau menjeda suara di ruang baca. Tekan panah kiri atau kanan untuk berpindah kalimat. Tekan H untuk mode kontras tinggi, A untuk panel aksesibilitas, dan tanda tanya untuk bantuan ini.',
             settings.speechRate,
             settings.speechPitch,
             settings.preferredVoiceURI

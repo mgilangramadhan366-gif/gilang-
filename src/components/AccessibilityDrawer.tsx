@@ -130,6 +130,38 @@ export function AccessibilityDrawer({
 
         {/* Scrollable Body */}
         <div className="flex-1 space-y-8 overflow-y-auto px-6 py-6">
+          {/* Quick Kid-Friendly Preset */}
+          <div className="rounded-xl border border-[var(--border-strong)] bg-[var(--bg-surface)] p-4">
+            <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
+              <div>
+                <h3 className="text-sm font-bold">Setelan Nyaman Anak</h3>
+                <p className="mt-0.5 text-xs text-[var(--text-muted)]">
+                  Huruf besar 22px, spasi lega, penggaris baca, dan suara pelan 0.9x
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  onUpdate({
+                    fontFamily: 'sans',
+                    fontSizePx: 22,
+                    lineHeight: 1.9,
+                    letterSpacing: 'wide',
+                    speechRate: 0.9,
+                    highlightSpokenSentence: true,
+                    readingRuler: true,
+                  });
+                  onAnnounce(
+                    'Setelan nyaman anak diterapkan: huruf besar 22 piksel, spasi lega, dan kecepatan suara 0,9 kali.'
+                  );
+                }}
+                className="min-h-[44px] shrink-0 rounded-lg bg-[var(--accent-primary)] px-4 py-2 text-xs font-bold text-[var(--accent-contrast-text)] hover:bg-[var(--accent-primary-hover)] whitespace-nowrap"
+              >
+                Terapkan Setelan Anak
+              </button>
+            </div>
+          </div>
+
           {/* Section 1: Pembaca Layar & Suara */}
           <section aria-labelledby="section-screen-reader">
             <h3

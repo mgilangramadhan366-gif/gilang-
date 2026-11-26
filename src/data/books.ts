@@ -1,416 +1,749 @@
 import { Book } from '../types/library';
 
 export const HERO_LIBRARY_IMAGE =
-  '/src/assets/images/hero_inclusive_library_1795675670142.jpg';
+  '/src/assets/images/hero_kids_library_1795677124301.jpg';
 
 export const LIBRARY_BOOKS: Book[] = [
   {
-    id: 'senja-di-pelabuhan-nusantara',
-    accessionCode: 'PI-2026-01',
-    title: 'Senja di Pelabuhan Nusantara',
-    subtitle: 'Catatan Perjalanan Lintas Pulau dan Suara Ombak Timur',
-    author: 'Ratna Sari Dewi',
-    narrator: 'Suara Sintesis Bahasa Indonesia',
-    category: 'Sastra & Fiksi',
-    year: 2025,
+    id: 'kancil-dan-lentera-kunang-kunang',
+    accessionCode: 'AN-2026-01',
+    title: 'Kancil dan Lentera Kunang-Kunang',
+    subtitle: 'Dongeng Hutan Malam tentang Berbagi Cahaya dan Menolong Sahabat',
+    author: 'Kak Rini Lestari',
+    narrator: 'Suara Cerita Anak Indonesia',
+    category: 'Fabel & Dongeng',
+    ageGroup: '4–6 Tahun',
+    year: 2026,
     language: 'Indonesia',
-    readingMinutes: 18,
-    audioMinutes: 22,
-    coverImage: '/src/assets/images/cover_senja_nusantara_1795675670901.jpg',
+    readingMinutes: 6,
+    audioMinutes: 8,
+    coverImage: '/src/assets/images/cover_kancil_lentera_1795677124672.jpg',
     coverAlt:
-      'Ilustrasi cukil kayu pegunungan vulkanik kepulauan Indonesia saat fajar di atas lautan tenang bernuansa biru lapis dan perunggu.',
+      'Ilustrasi buku anak bernuansa biru senja memperlihatkan seekor kancil kecil ramah memegang lentera kertas hangat di tengah hutan yang dipenuhi kunang-kunang.',
     coverAccentHex: '#1E3A8A',
     summary:
-      'Kisah puitis seorang penulis tunanetra yang memetakan pelabuhan-pelabuhan tua Nusantara melalui aroma rempah, gema lonceng kapal, dan ingatan para pelaut.',
+      'Ketika matahari terbenam lebih cepat di Rimba Teduh, Kiko si Kancil membawa lentera hangat untuk memandu anak landak yang ketakutan pulang ke rumahnya.',
     accessibilityNotes: [
-      'Deskripsi visual adegan tersedia pada catatan tepi setiap bab',
-      'Struktur kalimat dipecah presisi untuk pembaca layar',
-      'Tersedia unduhan teks terstruktur dan format siap Braille',
+      'Kalimat pendek dan ritmis untuk anak usia dini serta pembaca awal',
+      'Dilengkapi kamus kata baru bersuara di setiap bab',
+      'Deskripsi suasana hutan disajikan secara ramah pendengar',
     ],
     chapters: [
       {
         id: 'bab-1',
         number: 1,
-        title: 'Dermaga Pertama dan Aroma Kayu Manis',
+        title: 'Senja Datang Lebih Cepat',
         summary:
-          'Kedatangan di pelabuhan pagi hari ketika suara tali tambat dan angin laut menjadi kompas utama.',
+          'Langit Rimba Teduh berubah ungu saat Kiko menyalakan lentera kertasnya.',
         marginNote:
-          'Catatan Indrawi: Suara pelabuhan digambarkan melalui perubahan tekanan angin laut dan derit kayu dermaga yang terendam air pasang.',
+          'Bayangkan suasana hutan menjelang malam: suara jangkrik mulai bernyanyi pelan dan udara terasa sejuk di pipi.',
+        glossary: [
+          {
+            word: 'Lentera',
+            meaning: 'Lampu kecil bertutup kertas atau kaca yang bisa dijinjing saat berjalan di tempat gelap.',
+          },
+          {
+            word: 'Rimba',
+            meaning: 'Hutan yang lebat dengan banyak pohon tinggi dan hewan yang hidup rukun.',
+          },
+        ],
+        question: {
+          prompt: 'Mengapa Kiko membawa lentera saat berjalan di hutan?',
+          options: [
+            'Untuk menerangi jalan setapak yang mulai gelap',
+            'Untuk memancing ikan di sungai besar',
+            'Untuk memasak sup wortel hangat',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Benar sekali! Kiko membawa lentera agar jalan setapak di hutan tetap terlihat aman saat senja tiba.',
+        },
         paragraphs: [
-          'Pagi belum sepenuhnya terang ketika kapal perintis menyentuh bibir dermaga kayu di ujung timur pulau. Udara membawa campuran garam laut, asap kopi tubruk dari warung papan, dan wangi kulit kayu manis yang baru diturunkan dari perahu layar.',
-          'Bagi Nala, sebuah pelabuhan tidak pernah dimulai dari garis cakrawala yang tampak di mata, melainkan dari simfoni bunyi yang menyambut langkah pertamanya di papan jembatan. Ia mengenali usia dermaga dari cara kayu merespons tapak sepatunya yang mantap.',
-          'Di sebelah kiri, tali rami basah berderit ditarik dua orang buruh pelabuhan sambil bersahutan dengan logat pesisir yang hangat. Tongkat putih di tangan kanan Nala menyentuh permukaan batu koral yang masih menyimpan dinginnya embun malam.',
-          'Seorang penjaga mercusuar tua menyapa dari bangku bambu di dekat pos syahbandar. Ia menceritakan bagaimana suara bel kapal feri selalu berubah nadanya saat kabut laut turun lebih tebal dari biasanya.',
+          'Matahari baru saja bersembunyi di balik bukit ketika langit Rimba Teduh berubah menjadi biru tua yang lembut. Angin sore berdesir pelan di sela daun pakis, membawa wangi tanah basah setelah hujan.',
+          'Kiko si Kancil mengenakan sweter rajut kesayangannya lalu mengangkat sebuah lentera kertas berwarna kuning hangat. Di luar jendela rumahnya, belasan kunang-kunang kecil menari seperti bintang yang turun ke taman.',
+          'Tiba-tiba terdengar suara isakan halus dari balik semak bunga sepatu. Ternyata Dodo si anak landak tersesat karena lupa arah jalan pulang menuju lubang pohonnya.',
         ],
       },
       {
         id: 'bab-2',
         number: 2,
-        title: 'Peta Ingatan di Atas Perahu Cadik',
+        title: 'Tarian Cahaya Kunang-Kunang',
         summary:
-          'Melintasi selat sempit bersama nelayan lokal sambil mempelajari cara membaca arah angin.',
+          'Kiko mengajak para kunang-kunang membantu menerangi jembatan kayu.',
         marginNote:
-          'Istilah Bahari: Perahu cadik memakai penyeimbang bambu di sisi lambung untuk menjaga kestabilan di perairan berarus kuat.',
+          'Saat berjalan bersama, Kiko mengetukkan kaki pelan supaya Dodo selalu tahu ke mana harus melangkah.',
+        glossary: [
+          {
+            word: 'Jembatan',
+            meaning: 'Jalan kayu atau batu yang dibangun di atas sungai agar mudah diseberangi.',
+          },
+          {
+            word: 'Berpendar',
+            meaning: 'Memancarkan cahaya lembut yang berkelip-kelip dalam gelap.',
+          },
+        ],
+        question: {
+          prompt: 'Siapa yang ikut membantu menerangi jembatan kayu?',
+          options: [
+            'Sekawanan kunang-kunang yang bercahaya lembut',
+            'Burung hantu yang sedang tertidur pulas',
+            'Kura-kura dari danau sebelah',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Hebat! Sekawanan kunang-kunang terbang berbaris rapi untuk membantu menerangi jembatan kayu.',
+        },
         paragraphs: [
-          'Siang itu matahari beranjak tinggi dan menghangatkan bahu mereka di atas perahu cadik yang membelah selat tenang. Pak Darman, sang juru mudi, mengetuk sisi lambung kayu tiga kali untuk memberi tahu bahwa mereka mulai memasuki arus dingin.',
-          'Nala mencelupkan ujung jarinya ke permukaan air dan merasakan perubahan arus yang lebih deras dari tepian pantai tadi. Tanpa perlu melihat peta kertas, ia membayangkan gugusan karang di bawah permukaan sebagai kontur relief yang hidup.',
-          'Burung-burung camar terbang rendah dan teriakan mereka memantul di dinding tebing kapur sebelah utara. Pantulan gema itu menandakan jarak perahu sudah kurang dari seratus meter menuju teluk tempat desa nelayan berdiri.',
-          'Setiap tikungan pesisir meninggalkan tanda suara yang berbeda bagi siapa pun yang mau mendengarkan dengan sabar. Itulah perpustakaan alam yang tak pernah habis dibaca sepanjang hayat.',
+          'Jangan takut ya Dodo, kata Kiko sambil tersenyum ramah dan menurunkan lenteranya agar sejajar dengan mata sahabatnya. Aku akan menemanimu berjalan sampai ke depan pintu rumahmu.',
+          'Melihat kebaikan Kiko, sekawanan kunang-kunang terbang berbaris di sepanjang jembatan kayu kecil di atas sungai. Cahaya hijau kekuningan mereka berpendar lembut menerangi setiap papan jembatan.',
+          'Kiko berjalan di depan sambil mengetukkan ranting kecil pada tanah secara teratur. Bunyi ketukan itu membuat Dodo merasa tenang dan bisa mengikuti langkah Kiko dengan gembira.',
         ],
       },
       {
         id: 'bab-3',
         number: 3,
-        title: 'Lentera Malam dan Kisah Para Penenun',
+        title: 'Rumah Hangat dan Sup Jagung',
         summary:
-          'Pertemuan malam di balai desa bersama penenun kain tradisional yang bekerja dengan kepekaan sentuhan.',
+          'Dodo tiba di rumah dengan selamat dan semua sahabat berbagi makan malam.',
         marginNote:
-          'Warisan Tekstil: Penenun tradisional menghitung pola ikat berdasarkan ritme ketukan alat tenun dan ketebalan benang kapas.',
+          'Menolong teman dengan sabar membuat perjalanan yang terasa jauh menjadi singkat dan penuh tawa.',
+        glossary: [
+          {
+            word: 'Syukur',
+            meaning: 'Perasaan gembira dan berterima kasih atas kebaikan yang kita terima.',
+          },
+        ],
+        question: {
+          prompt: 'Pelajaran baik apa yang kita dapat dari kisah Kiko?',
+          options: [
+            'Berbagi cahaya dan menolong teman membuat semua merasa aman',
+            'Kita tidak boleh keluar rumah di pagi hari',
+            'Kunang-kunang hanya hidup di laut dalam',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Tepat! Berbagi kebaikan dan membantu teman yang kesulitan membuat hutan menjadi tempat yang ramah bagi semua.',
+        },
         paragraphs: [
-          'Menjelang malam, bunyi alat tenun kayu terdengar bersahut-sahutan dari beranda rumah panggung di pesisir selatan. Benang-benang kapas yang telah dicelup tarum dan kunyit digulung rapi di atas bilah bambu.',
-          'Ibu Halimah mengajak Nala menyentuh tekstur kain songket yang baru setengah jadi di atas bingkai kayu. Jari-jari mereka menyusuri alur benang timbul yang membentuk motif ombak dan bintang delapan penjuru.',
-          'Pola itu tidak pernah digambar di atas kertas, melainkan dihafalkan lewat hitungan ketukan kayu dan rasa ketegangan tiap helai benang. Tradisi lisan dan raba menyatu dalam selembar kain yang bertahan melampaui generasi.',
-          'Ketika lentera minyak dinyalakan satu per satu di sepanjang jalan setapak, Nala menuliskan catatannya menggunakan mesin ketik Braille portabel di pangkuannya. Bunyi tuts logam kecil itu berpadu harmonis dengan debur ombak malam.',
+          'Tak lama kemudian, tampaklah pintu bulat rumah keluarga landak di kaki pohon beringin tua. Ibu Dodo membuka pintu sambil memeluk anaknya erat dengan penuh rasa syukur.',
+          'Sebagai ucapan terima kasih, Ibu Dodo menuangkan semangkuk sup jagung manis hangat untuk Kiko. Para kunang-kunang pun ikut beristirahat di atas daun jambu sambil mendengarkan tawa mereka.',
+          'Malam itu Kiko pulang dengan hati yang jauh lebih hangat daripada lentera di tangannya. Ia tahu bahwa satu cahaya kecil yang dibagi bersama dapat menerangi seluruh hutan.',
         ],
       },
     ],
   },
   {
-    id: 'simfoni-bunyi-dan-sentuhan',
-    accessionCode: 'PI-2026-02',
-    title: 'Simfoni Bunyi dan Sentuhan',
-    subtitle: 'Sejarah Evolusi Huruf Braille dan Teknologi Pembaca Layar Modern',
-    author: 'Dr. Hendra Kusuma',
-    narrator: 'Suara Sintesis Bahasa Indonesia',
-    category: 'Sains & Teknologi',
+    id: 'petualangan-riri-si-tetes-air',
+    accessionCode: 'AN-2026-02',
+    title: 'Petualangan Riri Si Tetes Air',
+    subtitle: 'Belajar Siklus Air dari Lautan, Awan Kapas, hingga Taman Bunga',
+    author: 'Bunda Melati Putri',
+    narrator: 'Suara Cerita Anak Indonesia',
+    category: 'Sains Anak',
+    ageGroup: '7–9 Tahun',
     year: 2026,
     language: 'Indonesia',
-    readingMinutes: 16,
-    audioMinutes: 20,
-    coverImage: '/src/assets/images/cover_simfoni_bunyi_1795675670595.jpg',
+    readingMinutes: 8,
+    audioMinutes: 10,
+    coverImage: '/src/assets/images/cover_tetes_air_1795677125344.jpg',
     coverAlt:
-      'Karya seni cetak minimalis memperlihatkan gelombang akustik konsentris berpadu dengan kisi titik Braille timbul berwarna terakota di atas kertas krem.',
+      'Ilustrasi cat air buku anak bergambar setetes air biru tersenyum ceria melayang di samping awan putih lembut di atas bukit hijau dan sungai berkilau.',
+    coverAccentHex: '#0369A1',
+    summary:
+      'Ikuti perjalanan seru Riri si tetes air yang berubah menjadi uap ringan, berkumpul menjadi awan putih, lalu turun sebagai hujan segar menyirami bumi.',
+    accessibilityNotes: [
+      'Menjelaskan proses sains siklus air lewat cerita imajinatif',
+      'Istilah ilmiah seperti penguapan dan pengembunan dijelaskan sederhana',
+      'Cocok dibacakan dengan suara antarmuka untuk latihan menyimak',
+    ],
+    chapters: [
+      {
+        id: 'bab-1',
+        number: 1,
+        title: 'Terbang Bersama Sinar Matahari',
+        summary:
+          'Riri berubah menjadi uap air yang ringan saat sinar matahari pagi menghangatkan laut.',
+        marginNote:
+          'Proses sains: Ketika air terkena panas matahari dan naik ke udara sebagai gas tak terlihat, itu disebut penguapan.',
+        glossary: [
+          {
+            word: 'Menguap',
+            meaning: 'Berubah dari benda cair seperti air menjadi gas ringan yang naik ke udara.',
+          },
+          {
+            word: 'Samudra',
+            meaning: 'Lautan yang sangat luas dan dalam di permukaan bumi.',
+          },
+        ],
+        question: {
+          prompt: 'Apa yang membantu Riri naik melayang dari laut ke langit?',
+          options: [
+            'Kehangatan sinar matahari pagi',
+            'Balon udara milik petani',
+            'Sayap burung camar putih',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Benar! Sinar matahari menghangatkan permukaan laut sehingga air menguap dan naik ringan ke langit.',
+        },
+        paragraphs: [
+          'Di sebuah teluk biru yang tenang, tinggallah Riri, setetes air laut yang suka berpetualang. Setiap pagi ia melompat kecil mengikuti irama ombak sambil menyapa ikan badut di dekat karang.',
+          'Suatu siang yang cerah, sinar matahari menyinari permukaan samudra dengan hangat. Tubuh Riri perlahan terasa semakin ringan hingga ia berubah menjadi uap air yang melayang naik menembus udara.',
+          'Dari atas ketinggian, Riri bisa melihat perahu nelayan tampak sebesar biji kacang hijau. Angin laut membawanya terbang semakin tinggi menuju langit biru yang sejuk.',
+        ],
+      },
+      {
+        id: 'bab-2',
+        number: 2,
+        title: 'Berkumpul di Istana Awan Kapas',
+        summary:
+          'Di langit yang dingin, uap air berkumpul kembali menjadi butiran awan putih.',
+        marginNote:
+          'Proses sains: Uap air yang mendingin di ketinggian berubah kembali menjadi titik air kecil membentuk awan. Ini disebut pengembunan.',
+        glossary: [
+          {
+            word: 'Mengembun',
+            meaning: 'Perubahan uap air di udara dingin menjadi butiran air kecil kembali.',
+          },
+        ],
+        question: {
+          prompt: 'Mengapa uap air di langit berkumpul membentuk awan?',
+          options: [
+            'Karena udara di langit atas sangat dingin sehingga uap mengembun',
+            'Karena bulan menarik awan dengan tali perak',
+            'Karena angin lupa meniup ke barat',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Pintar! Udara dingin di atas membuat uap air mengembun menjadi titik-titik air kecil pembentuk awan.',
+        },
+        paragraphs: [
+          'Semakin tinggi Riri terbang, udara di sekitarnya terasa makin dingin seperti di dalam lemari es raksasa. Di sana ia bertemu jutaan teman uap air lain dari sungai, danau, dan hutan.',
+          'Karena kedinginan, mereka saling berpegangan erat dan berubah kembali menjadi titik-titik air mungil. Bersama-sama mereka membentuk gumpalan awan putih lembut menyerupai kapas raksasa.',
+          'Awan tempat Riri berada terus meluncur ditiup angin pegunungan ke arah daratan hijau. Di bawah sana tampak bukit teh, desa kecil, dan kebun sayur yang sedang menantikan kesegaran.',
+        ],
+      },
+      {
+        id: 'bab-3',
+        number: 3,
+        title: 'Hujan Musik di Atas Kebun Bunga',
+        summary:
+          'Riri turun sebagai rintik hujan yang menyegarkan tanah dan kembali ke sungai.',
+        marginNote:
+          'Coba dengarkan bunyi hujan di atap atau daun: tik, tik, tik—itu adalah air yang kembali memberi kehidupan bagi tanaman.',
+        glossary: [
+          {
+            word: 'Siklus',
+            meaning: 'Perputaran kejadian yang berlangsung terus-menerus dan kembali ke awal.',
+          },
+        ],
+        question: {
+          prompt: 'Ke mana Riri mengalir setelah menyirami kebun dan bukit?',
+          options: [
+            'Mengalir lewat sungai kecil kembali menuju laut',
+            'Berubah menjadi batu kerikil di jalan',
+            'Terbang langsung ke planet Mars',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Betul sekali! Air hujan meresap ke tanah dan mengalir melalui sungai untuk kembali ke laut, mengulang siklus air.',
+        },
+        paragraphs: [
+          'Ketika awan sudah terlalu penuh dan berat, Riri bersama jutaan sahabatnya bersiap meluncur turun sebagai rintik hujan. Tik, tik, tik, mereka menari riang di atas daun talas dan genting rumah warga.',
+          'Bunga melati dan pohon mangga segera menegakkan daunnya yang tadinya layu. Sebagian air meresap ke akar tanaman, sementara Riri meluncur gembira masuk ke aliran sungai jernih.',
+          'Sungai berkelok-kelok membawa Riri melewati sawah hijau hingga kembali bermuara di lautan luas. Perjalanan itu tidak pernah berakhir karena alam selalu menjaga siklus air berputar sepanjang masa.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'lagu-tangan-raka-dan-dina',
+    accessionCode: 'AN-2026-03',
+    title: 'Lagu Tangan Raka dan Dina',
+    subtitle: 'Kisah Persahabatan Belajar Bahasa Isyarat dan Buku Timbul di Sekolah',
+    author: 'Siti Aisyah',
+    narrator: 'Suara Cerita Anak Indonesia',
+    category: 'Persahabatan & Inklusi',
+    ageGroup: '7–9 Tahun',
+    year: 2026,
+    language: 'Indonesia',
+    readingMinutes: 8,
+    audioMinutes: 10,
+    coverImage: '/src/assets/images/cover_lagu_tangan_1795677125803.jpg',
+    coverAlt:
+      'Ilustrasi buku anak bergaya lukisan guas hangat menampilkan dua siswa sekolah dasar Indonesia duduk di bawah pohon rindang membaca buku bergambar timbul bersama diiringi kupu-kupu dan not musik.',
     coverAccentHex: '#9A3412',
     summary:
-      'Penelusuran mendalam bagaimana enam titik timbul Louis Braille berevolusi menjadi standar aksesibilitas digital, pembaca layar modern, dan mesin sintesis suara alami.',
+      'Dina seorang siswi Tuli dan Raka teman barunya yang bermata kurang awas saling bertukar cara unik membaca cerita dan bernyanyi lewat gerak tangan.',
     accessibilityNotes: [
-      'Menyertakan contoh pola enam titik Braille dalam deskripsi terstruktur',
-      'Dilengkapi glosarium teknis yang ramah pendengar audio',
-      'Cocok dibaca pada kecepatan narasi 1.1x hingga 1.3x',
+      'Memperkenalkan nilai empati, bahasa isyarat, dan huruf timbul sejak dini',
+      'Mengajarkan anak bahwa setiap teman punya cara hebat untuk berkomunikasi',
+      'Dukungan penuh pembaca layar dan unduhan teks ramah anak',
     ],
     chapters: [
       {
         id: 'bab-1',
         number: 1,
-        title: 'Enam Titik yang Mengubah Sejarah Literasi',
+        title: 'Tikar Bambu di Bawah Pohon Kersen',
         summary:
-          'Kisah penemuan sistem enam titik timbul yang memungkinkan pembacaan cepat dengan satu sentuhan ujung jari.',
+          'Raka dan Dina bertemu saat jam istirahat di pojok baca taman sekolah.',
         marginNote:
-          'Fakta Sel Braille: Satu sel Braille standar terdiri atas 2 kolom dan 3 baris titik, menghasilkan 63 kombinasi simbol taktil unik.',
+          'Catatan Inklusi: Bahasa Isyarat Indonesia (BISINDO) menggunakan gerakan tangan dan ekspresi wajah yang ekspresif untuk berbicara.',
+        glossary: [
+          {
+            word: 'Isyarat',
+            meaning: 'Tanda komunikasi menggunakan gerak tangan dan ekspresi wajah tanpa suara.',
+          },
+          {
+            word: 'Timbul',
+            meaning: 'Permukaan huruf atau gambar yang menonjol sehingga bisa diraba dengan jari.',
+          },
+        ],
+        question: {
+          prompt: 'Apa yang dibawa Dina saat duduk di atas tikar bambu?',
+          options: [
+            'Buku dongeng bergambar timbul berwarna cerah',
+            'Bola basket berukuran besar',
+            'Sepeda roda tiga berwarna merah',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Benar! Dina membawa buku cerita bergambar timbul agar dapat dinikmati bersama oleh Raka.',
+        },
         paragraphs: [
-          'Pada awal abad kesembilan belas, buku bagi pembaca tunanetra dicetak menggunakan huruf Latin raksasa yang ditimbulkan di atas kertas tebal. Metode itu membuat satu jilid novel saja beratnya menyamai beberapa batu bata dan sangat lambat dibaca.',
-          'Terinspirasi dari kode komunikasi malam hari yang memakai dua belas titik timbul, seorang pelajar muda bernama Louis Braille menyederhanakannya menjadi matriks enam titik saja. Ukuran enam titik tersebut pas berada tepat di bawah bantalan satu ujung jari telunjuk manusia.',
-          'Dengan satu sentuhan ringan tanpa harus menggeser tangan ke atas dan ke bawah, pembaca dapat mengenali huruf, tanda baca, angka, hingga notasi musik klasik. Penemuan sederhana ini membuka gerbang kemandirian literasi bagi jutaan orang di seluruh dunia.',
-          'Dari ruang kelas kecil di Paris, sistem enam titik itu melintasi samudra dan diadaptasi ke berbagai bahasa termasuk aksara Nusantara dan istilah ilmiah modern.',
+          'Saat bel istirahat berbunyi, siswa-siswa SD Pelangi berlarian ke halaman sekolah yang teduh oleh pohon kersen. Di atas tikar bambu yang rapi, Dina membuka sebuah buku cerita bergambar timbul berwarna hijau cerah.',
+          'Raka duduk di sampingnya sambil membawa kacamata tebal kesayangannya. Karena penglihatan Raka agak kabur pada huruf kecil, ia senang sekali meraba bentuk daun dan kelopak bunga timbul pada buku Dina.',
+          'Dina yang berkomunikasi memakai bahasa isyarat tersenyum lebar melihat antusiasme Raka. Ia menunjuk gambar burung pipit lalu menggerakkan kedua ibu jarinya seperti sayap yang mengepak.',
         ],
       },
       {
         id: 'bab-2',
         number: 2,
-        title: 'Lahirnya Pembaca Layar di Era Komputasi',
+        title: 'Mengenal Huruf dengan Jari dan Gerakan',
         summary:
-          'Bagaimana komputer teks dan antarmuka grafis diterjemahkan menjadi suara dan baris Braille dinamis.',
+          'Dina mengajari Raka isyarat kata terima kasih, sementara Raka membacakan cerita.',
         marginNote:
-          'Standar Web: Atribut ARIA dan hirarki judul HTML yang benar adalah jembatan utama antara kode situs dan telinga pembaca.',
+          'Coba praktikkan: Tempelkan ujung jari di dagu lalu gerakkan pelan ke depan sambil tersenyum untuk isyarat terima kasih.',
+        glossary: [
+          {
+            word: 'Ekspresi',
+            meaning: 'Raut wajah yang menunjukkan perasaan seperti senang, kagum, atau ramah.',
+          },
+        ],
+        question: {
+          prompt: 'Bagaimana Raka dan Dina saling membantu saat membaca?',
+          options: [
+            'Raka membantu mengetuk irama dan bercerita, Dina mengajari gerakan isyarat',
+            'Mereka membaca di kelas yang terpisah jauh',
+            'Mereka menyembunyikan buku di dalam tas',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Hebat! Raka dan Dina saling melengkapi sehingga membaca buku bersama jadi jauh lebih menyenangkan.',
+        },
         paragraphs: [
-          'Ketika komputer pribadi mulai memakai layar grafis penuh jendela dan ikon pada dekade delapan puluhan, banyak pengguna tunanetra sempat terancam tertinggal dari gelombang teknologi baru. Layar tidak lagi sekadar barisan teks sederhana yang mudah dibaca oleh perangkat lunak awal.',
-          'Para insinyur aksesibilitas kemudian merancang pohon aksesibilitas di dalam sistem operasi yang memetakan setiap tombol, tautan, kotak dialog, dan judul ke dalam informasi semantik. Dari pohon inilah perangkat lunak pembaca layar mengambil makna antarmuka dan membacakannya dengan suara sintetis.',
-          'Perkembangan berikutnya menghadirkan standar web terbuka seperti WCAG dan WAI-ARIA yang menegaskan bahwa informasi digital harus dapat diakses melalui papan ketik, suara, maupun layar Braille yang dapat disegarkan.',
-          'Saat sebuah halaman web disusun dengan struktur semantik yang jujur, pengguna tidak perlu melihat posisi visual tombol untuk langsung memahaminya dan mengoperasikannya dengan cepat.',
+          'Hari itu mereka berdua membuat kesepakatan kecil yang seru. Dina mengajari Raka lima kata bahasa isyarat baru, mulai dari selamat pagi, sahabat, hingga terima kasih.',
+          'Sebagai gantinya, Raka meminjamkan buku audio dari perpustakaan sekolah dan mengetukkan irama tepuk tangan pelan di meja. Dina bisa merasakan getaran irama itu sambil mengikuti gerak bibir Raka yang jelas.',
+          'Teman-teman sekelas yang lewat ikut berhenti karena penasaran melihat tawa mereka. Dalam sekejap, halaman bawah pohon kersen berubah menjadi klub cerita paling ramai di sekolah.',
         ],
       },
       {
         id: 'bab-3',
         number: 3,
-        title: 'Masa Depan Narasi Adaptif dan Desain Universal',
+        title: 'Pentas Lagu Tangan di Hari Anak',
         summary:
-          'Mengapa merancang untuk kebutuhan disabilitas pada akhirnya menciptakan produk digital yang lebih baik bagi semua orang.',
+          'Seluruh kelas tampil menyanyikan lagu persahabatan sambil bergerak dalam bahasa isyarat.',
         marginNote:
-          'Prinsip Desain Universal: Keterangan teks pada video awalnya dibuat untuk komunitas Tuli, kini digunakan oleh jutaan orang di lingkungan ramai.',
+          'Ketika semua anak diajak belajar cara komunikasi yang beragam, tidak ada lagi teman yang merasa sendirian.',
+        glossary: [
+          {
+            word: 'Harmonis',
+            meaning: 'Selaras, rukun, dan indah saat dilakukan bersama-sama.',
+          },
+        ],
+        question: {
+          prompt: 'Mengapa pertunjukan kelas mereka terasa sangat istimewa?',
+          options: [
+            'Karena suara nyanyian dan gerak bahasa isyarat berpadu menjadi satu',
+            'Karena panggungnya dibangun di atas kolam ikan',
+            'Karena tidak ada penonton yang hadir',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Tepat sekali! Semua teman bisa ikut bernyanyi dan menikmati lagu bersama lewat suara sekaligus gerak tangan.',
+        },
         paragraphs: [
-          'Teknologi sintesis ucapan modern kini mampu mengucapkan intonasi tanda tanya, jeda koma, dan penekanan kalimat jauh lebih natural dibandingkan suara robotik masa lalu. Hal ini mengurangi kelelahan mendengar bagi pembaca buku digital berdurasi panjang.',
-          'Selain suara, hadirnya huruf ramah disleksia dan penggaris fokus visual membuktikan bahwa hambatan membaca sangat beragam dan tidak bisa diseragamkan. Setiap pembaca berhak mengatur jarak huruf, kontras latar, serta kecepatan aliran teks sesuai kenyamanan saraf matanya.',
-          'Desain universal mengajarkan satu pelajaran penting: fitur aksesibilitas bukanlah tambahan kosmetik di akhir proyek, melainkan fondasi arsitektur yang membuat pengetahuan benar-benar milik bersama.',
+          'Sebulan kemudian saat perayaan Hari Anak di aula sekolah, kelas Raka dan Dina menyiapkan penampilan istimewa. Mereka menyanyikan lagu tentang indahnya pelangi setelah hujan dengan iringan gerak tangan bahasa isyarat.',
+          'Ibu guru juga menyiapkan papan lirik berukuran huruf ekstra besar dengan warna kontras kuning dan biru tua. Penonton bisa mendengarkan melodi musik sekaligus menyaksikan tarian jari yang harmonis.',
+          'Ketika lagu selesai, seluruh aula bertepuk tangan dan mengangkat kedua telapak tangan lalu memutar-mutarnya sebagai tepuk tangan bahasa isyarat. Raka dan Dina saling bertukar senyum bangga.',
         ],
       },
     ],
   },
   {
-    id: 'arsitektur-ruang-empati',
-    accessionCode: 'PI-2026-03',
-    title: 'Arsitektur Ruang Empati',
-    subtitle: 'Merancang Kota, Perpustakaan, dan Taman yang Ramah Bagi Semua Tubuh',
-    author: 'Ar. Nadia Pramesti',
-    narrator: 'Suara Sintesis Bahasa Indonesia',
-    category: 'Arsitektur & Ruang',
-    year: 2025,
-    language: 'Indonesia',
-    readingMinutes: 15,
-    audioMinutes: 19,
-    coverImage: '/src/assets/images/cover_arsitektur_empati_1795675672447.jpg',
-    coverAlt:
-      'Ilustrasi arsitektur pelataran terbuka bermandikan sinar matahari dengan lengkungan batu gamping, jalur landai bertumpu pegangan tangan, dan taman hijau tenang.',
-    coverAccentHex: '#14532D',
-    summary:
-      'Panduan arsitektur inklusif yang membahas jalur landai tanpa stigma, ubin pemandu taktil, pencahayaan bebas silau, serta akustik ruang publik yang tenang.',
-    accessibilityNotes: [
-      'Menyajikan ukuran dimensi standar dalam format angka terstruktur',
-      'Dilengkapi ilustrasi verbal jalur sirkulasi bangunan publik',
-      'Ideal untuk mahasiswa, perencana kota, dan pegiat inklusi',
-    ],
-    chapters: [
-      {
-        id: 'bab-1',
-        number: 1,
-        title: 'Jalur Landai yang Terhormat',
-        summary:
-          'Mengganti jalur darurat di belakang gedung dengan ramp utama yang menjadi pusat estetika bangunan.',
-        marginNote:
-          'Rasio Kemiringan: Jalur landai publik yang nyaman tanpa bantuan pendorong memiliki kemiringan maksimal 1 banding 12 dengan bordes datar setiap 9 meter.',
-        paragraphs: [
-          'Terlalu sering kita menjumpai gedung megah dengan tangga marmer lebar di bagian depan, sementara jalur bagi pengguna kursi roda disembunyikan di samping area pembuangan sampah belakang. Desain seperti itu secara halus mengirimkan pesan bahwa sebagian warga hanyalah tamu sampingan.',
-          'Arsitektur empati membalik logika tersebut dengan menempatkan jalur landai tepat di tengah alur kedatangan utama semua pengunjung. Ketika orang tua mendorong kereta bayi, pelancong membawa koper, dan pengguna kursi roda berjalan di lintasan landai yang sama, ruang publik berubah menjadi setara.',
-          'Material lantai pun dipilih dengan cermat agar tidak licin saat hujan turun dan memiliki tekstur lembut yang meredam getaran roda. Pegangan tangan dipasang pada dua ketinggian berbeda sehingga anak-anak maupun orang dewasa dapat meraihnya dengan mantap.',
-        ],
-      },
-      {
-        id: 'bab-2',
-        number: 2,
-        title: 'Akustik Tenang dan Pencahayaan Bebas Silau',
-        summary:
-          'Menata ruang baca agar ramah bagi penyandang autisme, gangguan pendengaran, dan kepekaan cahaya.',
-        marginNote:
-          'Kontrol Akustik: Panel kayu berpori dan karpet serat alami membantu memangkas waktu gema ruangan di bawah 0,6 detik.',
-        paragraphs: [
-          'Sebuah perpustakaan yang tampak rapi di foto belum tentu nyaman bagi pengguna alat bantu dengar atau individu neurodivergen. Pantulan suara dari dinding beton polos dan lantai keramik mengilap dapat menciptakan dengung latar yang melelahkan pikiran.',
-          'Dengan melapisi langit-langit memakai kisi kayu peredam suara dan membagi zona baca menjadi ruang hening serta ruang diskusi terpisah, setiap orang bisa memilih tingkat stimulasi yang aman baginya. Lampu pijar berkedip diganti pencahayaan tidak langsung yang menyebar rata tanpa menyilaukan mata.',
-          'Di dekat pintu masuk setiap ruangan, dipasang papan denah timbul berkontras tinggi yang memadukan teks besar, huruf Braille, serta kode warna yang konsisten dan tidak bergantung pada warna semata.',
-        ],
-      },
-      {
-        id: 'bab-3',
-        number: 3,
-        title: 'Taman Sensori di Jantung Kota',
-        summary:
-          'Bagaimana tanaman beraroma, gemericik air, dan tekstur batu membantu orientasi ruang luar.',
-        marginNote:
-          'Navigasi Alam: Perubahan bunyi air mancur dan aroma tanaman serai atau melati menjadi penanda arah alami di persimpangan taman.',
-        paragraphs: [
-          'Ruang terbuka hijau tidak seharusnya hanya dinikmati melalui keindahan warna bunga dari kejauhan. Taman sensori dirancang agar dapat dirasakan lewat aroma daun mint, bunyi gemericik pancuran batu, dan rabaan kulit kayu yang aman disentuh.',
-          'Bak tanaman ditinggikan setinggi pinggang agar pengguna kursi roda maupun lansia yang sulit membungkuk dapat menyentuh tanah dan merawat tanaman secara langsung. Lebar jalan setapak dibuat minimal dua meter agar dua kursi roda dapat berpapasan dengan leluasa.',
-          'Ketika kota memberi ruang bagi keberagaman tubuh dan indera manusia, setiap sudut jalan menjadi undangan terbuka untuk berpartisipasi penuh dalam kehidupan bermasyarakat.',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'kosmos-dalam-gema-cahaya',
-    accessionCode: 'PI-2026-04',
-    title: 'Kosmos dalam Gema Cahaya',
-    subtitle: 'Mengenal Astronomi Melalui Sonifikasi Data dan Peta Bintang Taktil',
-    author: 'Prof. Bagus Pradipta',
-    narrator: 'Suara Sintesis Bahasa Indonesia',
-    category: 'Sains & Teknologi',
+    id: 'penjaga-terumbu-karang-kecil',
+    accessionCode: 'AN-2026-04',
+    title: 'Penjaga Terumbu Karang Kecil',
+    subtitle: 'Cerita Anak Pesisir Menyelamatkan Rumah Ikan Badut dan Tukik Penyu',
+    author: 'Danu Wicaksono',
+    narrator: 'Suara Cerita Anak Indonesia',
+    category: 'Alam & Nusantara',
+    ageGroup: '10–12 Tahun',
     year: 2026,
     language: 'Indonesia',
-    readingMinutes: 17,
-    audioMinutes: 21,
-    coverImage: '/src/assets/images/cover_kosmos_cahaya_1795675672675.jpg',
+    readingMinutes: 9,
+    audioMinutes: 11,
+    coverImage: '/src/assets/images/cover_terumbu_karang_1795677126283.jpg',
     coverAlt:
-      'Ilustrasi monograf astronomi klasik bergambar lingkaran orbit planet, astrolabe, dan rasi bintang berukir garis emas perunggu di atas latar biru malam.',
-    coverAccentHex: '#1E293B',
-    summary:
-      'Bagaimana astronom tunanetra mengubah gelombang cahaya bintang jauh, cincin Saturnus, dan lubang hitam menjadi simfoni suara yang akurat secara ilmiah.',
-    accessibilityNotes: [
-      'Menjelaskan konsep sonifikasi astronomi tanpa jargon rumit',
-      'Analogi akustik membantu memvisualisasikan skala tata surya',
-      'Dukungan penuh navigasi antar-kalimat dengan tombol panah',
-    ],
-    chapters: [
-      {
-        id: 'bab-1',
-        number: 1,
-        title: 'Mendengarkan Cahaya yang Tak Terlihat Mata',
-        summary:
-          'Mengapa sebagian besar pengamatan teleskop modern sebenarnya berada di luar jangkauan mata manusia dan harus diterjemahkan.',
-        marginNote:
-          'Spektrum Cahaya: Teleskop inframerah dan sinar-X selalu menerjemahkan data angka menjadi warna buatan atau gelombang suara.',
-        paragraphs: [
-          'Banyak orang mengira astronomi hanyalah ilmu menatap lensa teleskop di puncak gunung pada malam hari. Kenyataannya, sebagian besar data dari teleskop luar angkasa modern datang dalam bentuk deretan angka gelombang radio, inframerah, dan sinar-X yang bahkan tidak terlihat oleh mata manusia.',
-          'Karena data kosmos itu sejatinya adalah angka, para ilmuwan memiliki dua cara utama untuk memahaminya: mengubahnya menjadi gambar warna buatan, atau mengubahnya menjadi bunyi terstruktur yang disebut sonifikasi.',
-          'Dalam sonifikasi bintang, tingkat kecerahan cahaya diterjemahkan menjadi keras lembutnya suara, sementara jenis unsur kimia seperti hidrogen atau oksigen diwakili oleh warna nada alat musik tertentu. Telinga manusia ternyata sangat peka menangkap pola berulang dalam derau sinyal luar angkasa.',
-        ],
-      },
-      {
-        id: 'bab-2',
-        number: 2,
-        title: 'Irama Cincin Saturnus dan Denyut Pulsar',
-        summary:
-          'Memahami struktur planet bercincin dan bintang neutron melalui nada tinggi rendah yang terukur.',
-        marginNote:
-          'Pulsar: Bintang neutron berputar cepat yang memancarkan gelombang radio teratur layaknya mercusuar kosmik berdetak.',
-        paragraphs: [
-          'Bayangkan sebuah garis pemindai bergerak pelan dari pusat planet Saturnus menuju ujung terluar cincin esnya. Saat garis melintasi bagian cincin yang padat oleh bongkahan batu es, suara dawai berbunyi rapat dan jernih.',
-          'Ketika pemindai melewati celah kosong seperti Divisi Cassini yang memisahkan cincin utama, suara mendadak hening sejenak sebelum kembali berdengung pada lapisan luar. Dengan cara ini, struktur ruang yang berjarak lebih dari satu miliar kilometer dapat didengar dalam tiga puluh detik.',
-          'Sementara itu, bintang pulsar memancarkan denyut gelombang radio yang begitu teratur hingga terdengar seperti ketukan drum cepat. Beberapa astronom tunanetra terkenal justru menemukan keanehan sinyal pulsar pertama kali melalui kepekaan pendengaran mereka.',
-        ],
-      },
-      {
-        id: 'bab-3',
-        number: 3,
-        title: 'Peta Langit yang Dapat Disentuh',
-        summary:
-          'Membuat model timbul rasi bintang dan kawah bulan menggunakan cetakan tiga dimensi.',
-        marginNote:
-          'Model 3D Bulan: Data topografi ketinggian kawah bulan diubah menjadi bola bertekstur timbul untuk kelas sains inklusif.',
-        paragraphs: [
-          'Di ruang kelas sains inklusif, peta langit datar diganti oleh kubah raba yang membedakan tingkat terang bintang melalui ukuran tonjolan manik. Bintang paling terang di rasi Orion terasa besar dan tajam, sedangkan bintang redup terasa seperti titik halus.',
-          'Garis penghubung antar-bintang dicetak menggunakan benang timbul agar siswa dapat meraba bentuk keseluruhan rasi dalam satu gerakan tangan. Di sampingnya, bola model Bulan memperlihatkan lekukan kawah benturan meteorit yang sebenarnya.',
-          'Alam semesta terlalu luas untuk dibatasi oleh satu jenis indera saja. Melalui suara dan sentuhan, setiap pembelajar memiliki hak yang sama untuk mengagumi keteraturan langit malam.',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'panduan-navigasi-layar-mandiri',
-    accessionCode: 'PI-2026-05',
-    title: 'Panduan Navigasi Layar Mandiri',
-    subtitle: 'Kiat Praktis Membaca Web, Dokumen, dan Pintasan Papan Ketik',
-    author: 'Tim Literasi Digital Inklusi',
-    narrator: 'Suara Sintesis Bahasa Indonesia',
-    category: 'Panduan Aksesibilitas',
-    year: 2026,
-    language: 'Indonesia',
-    readingMinutes: 12,
-    audioMinutes: 15,
-    coverAlt:
-      'Sampul arsip tipografis bertema navigasi papan ketik dan simbol aksesibilitas digital bernuansa biru gelap.',
+      'Ilustrasi gaya potongan kertas dan cat air memperlihatkan seekor tukik penyu hijau berenang gembira di atas terumbu karang warna-warni dan ikan-ikan kecil di laut biru jernih.',
     coverAccentHex: '#0F766E',
     summary:
-      'Buku pegangan ringkas bagi pengguna baru pembaca layar dan navigasi tanpa tetikus untuk menaklukkan aplikasi web modern dengan percaya diri.',
+      'Surya dan teman-teman desa pesisir bekerja sama membersihkan pantai dan menanam bibit karang agar rumah para penyu dan ikan kecil kembali asri.',
     accessibilityNotes: [
-      'Berisi daftar langkah terstruktur untuk navigasi papan ketik',
-      'Bahasa instruksi ringkas dan langsung dapat dipraktikkan',
-      'Kompatibel dengan tombol pintasan di aplikasi Pustaka Inklusi',
+      'Menumbuhkan cinta lingkungan laut Nusantara sejak usia sekolah dasar',
+      'Menggambarkan bentuk karang dan kehidupan laut lewat perumpamaan rabaan',
+      'Tersedia ringkasan dan pertanyaan pemahaman di tiap bab',
     ],
     chapters: [
       {
         id: 'bab-1',
         number: 1,
-        title: 'Memahami Fokus Papan Ketik dan Tautan Lompat',
+        title: 'Jejak Kecil di Pasir Pantai Pagi',
         summary:
-          'Menguasai tombol Tab, Shift+Tab, dan tautan lompat agar tidak terjebak di bilah menu berulang.',
+          'Surya menemukan jejak tukik penyu dan kantong plastik yang menghalangi jalannya ke laut.',
         marginNote:
-          'Tips Cepat: Tekan Tab sekali saat halaman pertama terbuka untuk menemukan tautan Lompat ke Konten Utama.',
+          'Fakta Alam: Tukik atau bayi penyu menetas di pasir lalu berjalan mengikuti pantulan cahaya bulan dan suara ombak menuju laut.',
+        glossary: [
+          {
+            word: 'Tukik',
+            meaning: 'Bayi penyu yang baru menetas dari telur di dalam pasir pantai.',
+          },
+          {
+            word: 'Terumbu Karang',
+            meaning: 'Struktur batu kapur alami di dasar laut yang menjadi rumah ribuan jenis ikan.',
+          },
+        ],
+        question: {
+          prompt: 'Apa yang menghalangi jalan bayi penyu menuju ombak laut?',
+          options: [
+            'Sampah plastik dan jaring tua yang tersangkut di pasir',
+            'Istana pasir yang dibangun burung pelikan',
+            'Batu permata berwarna hijau',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Benar! Sampah plastik di pantai sangat berbahaya bagi tukik yang baru menetas.',
+        },
         paragraphs: [
-          'Langkah pertama dalam membaca halaman web tanpa tetikus adalah memahami konsep fokus papan ketik. Setiap kali tombol Tab ditekan, kursor logis akan berpindah ke elemen interaktif berikutnya seperti tautan, kolom pencarian, atau tombol aksi.',
-          'Jika Anda ingin mundur satu langkah ke elemen sebelumnya, cukup tekan kombinasi tombol Shift bersama Tab. Untuk mengaktifkan tombol atau membuka tautan yang sedang difokuskan, gunakan tombol Enter atau Spasi.',
-          'Situs yang dirancang dengan baik selalu menyediakan tautan lompat di posisi paling awal halaman. Fitur ini menghemat banyak waktu karena Anda dapat langsung melompati daftar menu atas dan menuju inti bacaan.',
+          'Setiap Sabtu pagi, Surya berlari menyusuri garis pantai Desa Karang Indah bersama kakaknya yang gemar memotret burung laut. Pasir putih terasa hangat di telapak kaki sementara ombak berkejaran pelan.',
+          'Di dekat rumpun pandan laut, Surya melihat alur jejak kecil menyerupai rantai roda mungil menuju bibir air. Itu adalah jejak seekor tukik penyu yang baru menetas semalam.',
+          'Sayangnya, beberapa meter di depan alur itu tersangkut botol plastik dan potongan tali jaring yang dibawa arus pasang. Surya segera memungut sampah tersebut agar jalan para tukik tetap lapang dan aman.',
         ],
       },
       {
         id: 'bab-2',
         number: 2,
-        title: 'Menjelajah Cepat Lewat Judul dan Landmark',
+        title: 'Taman Karang Bawah Air',
         summary:
-          'Cara membaca sekilas struktur artikel panjang tanpa harus mendengarkan setiap kata dari awal.',
+          'Pak Nelayan menunjukkan peta timbul karang laut dan rumah ikan badut.',
         marginNote:
-          'Hirarki Judul: Judul tingkat satu menandai topik utama halaman, sedangkan judul tingkat dua dan tiga membagi subbagian.',
+          'Bayangkan bentuk karang otak yang berlekuk seperti labirin, dan karang meja yang datar seperti payung tempat ikan berteduh.',
+        glossary: [
+          {
+            word: 'Anemon',
+            meaning: 'Hewan laut berumbai lembut mirip bunga yang menjadi rumah aman bagi ikan badut.',
+          },
+        ],
+        question: {
+          prompt: 'Mengapa terumbu karang disebut sebagai kota bagi ikan laut?',
+          options: [
+            'Karena karang menyediakan tempat berteduh, mencari makan, dan bertelur',
+            'Karena ikan membangun rumah dari kayu di atas karang',
+            'Karena di sana ada lampu lalu lintas bawah laut',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Tepat! Terumbu karang melindungi ikan kecil dari arus deras dan menyediakan makanan alami.',
+        },
         paragraphs: [
-          'Pembaca visual memindai halaman koran dengan melirik judul-judul besar sebelum memutuskan paragraf mana yang ingin dibaca. Pengguna pembaca layar melakukan hal yang persis sama menggunakan daftar judul halaman.',
-          'Di dalam pembaca Pustaka Inklusi ini, setiap bab memiliki nomor urut dan ringkasan singkat di bagian awal. Anda bisa berpindah antar-bab atau langsung melompat ke kalimat tertentu menggunakan tombol panah kiri dan kanan.',
-          'Manfaatkan juga fitur penanda halaman whenever menemukan bagian penting yang ingin dipelajari ulang di lain hari. Penanda akan tersimpan aman dan langsung mengembalikan posisi baca Anda.',
+          'Siang harinya di balai desa, Pak Haris membawa model terumbu karang dari tanah liat bakar agar anak-anak bisa meraba bentuknya langsung. Ada karang yang berlekuk halus seperti kembang kol dan ada pula yang bercabang ramping bagaikan tanduk rusa.',
+          'Terumbu karang bukan sekadar batu mati, melainkan makhluk hidup yang tumbuh sangat lambat dan menjadi kota bagi ribuan ikan, jelas Pak Haris. Di sela anemon laut yang lembut, keluarga ikan badut bersembunyi dari pemangsa.',
+          'Jika air laut tetap bersih dan bebas sampah, ikan-ikan akan betah berkembang biak di dekat pantai. Penyu hijau pun selalu punya persediaan rumput laut segar.',
         ],
       },
       {
         id: 'bab-3',
         number: 3,
-        title: 'Menyesuaikan Suara, Kontras, dan Tata Letak',
+        title: 'Pasukan Kebersihan Cilik Pesisir',
         summary:
-          'Menemukan setelan kecepatan bicara, ukuran huruf, dan penggaris baca yang paling nyaman bagi Anda.',
+          'Anak-anak desa memasang papan himbauan ramah lingkungan dan menanam bibit karang.',
         marginNote:
-          'Personalisasi: Tidak ada satu setelan baku untuk semua orang; ubahlah ukuran huruf atau kontras kapan pun cahaya ruangan berubah.',
+          'Aksi sederhana seperti membawa botol minum sendiri mengurangi sampah plastik yang bisa hanyut ke laut.',
+        glossary: [
+          {
+            word: 'Lestari',
+            meaning: 'Tetap terjaga keadaannya secara baik dan tidak rusak hingga masa depan.',
+          },
+        ],
+        question: {
+          prompt: 'Kebiasaan baik apa yang mulai diterapkan anak-anak Desa Karang Indah?',
+          options: [
+            'Membawa wadah makan sendiri dan rutin memilah sampah pantai',
+            'Membuang daun kering ke tengah laut',
+            'Mengambil semua kerang hidup untuk dijual',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Hebat! Mengurangi plastik sekali pakai menjaga laut tetap jernih dan lestari bagi semua makhluk.',
+        },
         paragraphs: [
-          'Setiap pembaca memiliki ketahanan mata dan kecepatan serap audio yang berbeda-beda. Jangan ragu menaikkan kecepatan suara hingga satu koma lima kali apabila Anda sudah terbiasa mendengarkan buku audio.',
-          'Sebaliknya, bagi pembaca yang mengalami disleksia atau kelelahan mata akibat layar putih terlalu silau, cobalah tema Krem Disleksia atau Kontras Ekstrem latar hitam teks kuning.',
-          'Aktifkan Penggaris Baca dari panel Aksesibilitas untuk memunculkan pita fokus horizontal yang menjaga pandangan tetap tenang di baris yang sedang Anda pelajari.',
+          'Minggu berikutnya, Surya mengajak dua belas teman sekolahnya membentuk kelompok Penjaga Karang Cilik. Mereka mengecat papan kayu dengan huruf besar dan simbol gambar yang mudah dipahami semua pengunjung pantai.',
+          'Mereka juga bersepakat membawa botol minum isi ulang dari rumah setiap kali bermain di luar. Sampah daun dikumpulkan untuk pupuk kebun kelapa, sedangkan plastik dipisahkan untuk didaur ulang.',
+          'Senja itu seekor penyu dewasa berenang tenang di perairan dangkal yang jernih. Surya tersenyum lebar karena tahu laut biru kini memiliki banyak sahabat kecil yang menjaganya.',
         ],
       },
     ],
   },
   {
-    id: 'kronik-batik-dan-kisah-tangan',
-    accessionCode: 'PI-2026-06',
-    title: 'Kronik Batik dan Kisah Tangan',
-    subtitle: 'Memaknai Filosofi Motif Klasik Jawa Melalui Deskripsi Taktil',
-    author: 'Dewi Anggraini',
-    narrator: 'Suara Sintesis Bahasa Indonesia',
-    category: 'Seni & Budaya',
-    year: 2025,
+    id: 'rahasia-bintang-dan-bulan',
+    accessionCode: 'AN-2026-05',
+    title: 'Rahasia Bintang dan Bulan',
+    subtitle: 'Menjelajah Tata Surya Lewat Suara Planet dan Peta Langit Timbul',
+    author: 'Kak Bagas Pradipta',
+    narrator: 'Suara Cerita Anak Indonesia',
+    category: 'Sains Anak',
+    ageGroup: '10–12 Tahun',
+    year: 2026,
     language: 'Indonesia',
-    readingMinutes: 14,
-    audioMinutes: 18,
+    readingMinutes: 8,
+    audioMinutes: 10,
+    coverImage: '/src/assets/images/cover_kosmos_cahaya_1795675672675.jpg',
     coverAlt:
-      'Sampul arsip tipografis bernuansa sogan cokelat tua dengan ornamen garis geometris motif parang klasik.',
-    coverAccentHex: '#78350F',
+      'Ilustrasi monograf astronomi klasik bergambar lingkaran orbit planet dan rasi bintang berukir garis keemasan di atas latar biru malam.',
+    coverAccentHex: '#1E293B',
     summary:
-      'Menguraikan makna filosofis di balik motif Parang, Kawung, dan Truntum dengan penggambaran bentuk geometris yang hidup bagi pembaca non-visual.',
+      'Mengajak pembaca cilik mengenal delapan planet tata surya, kawah bulan, dan bagaimana ilmuwan mengubah cahaya bintang menjadi musik angkasa.',
     accessibilityNotes: [
-      'Setiap motif batik dijelaskan bentuk geometrisnya secara rinci',
-      'Menyertakan alur urutan proses pembatikan dari mori hingga pelorodan',
-      'Mendukung ekspor teks lengkap untuk bahan ajar budaya',
+      'Menyajikan perbandingan ukuran planet dengan benda sehari-hari yang mudah dibayangkan',
+      'Memperkenalkan konsep sonifikasi data luar angkasa untuk anak',
+      'Dilengkapi daftar kosakata sains ramah pembaca muda',
     ],
     chapters: [
       {
         id: 'bab-1',
         number: 1,
-        title: 'Geometri Ombak pada Motif Parang',
+        title: 'Seandainya Matahari Sebesar Bola Basket',
         summary:
-          'Membayangkan garis diagonal tegas motif parang yang terinspirasi oleh debur ombak memecah karang.',
+          'Membandingkan ukuran Matahari, Bumi, dan Jupiter menggunakan buah serta bola.',
         marginNote:
-          'Pola Diagonal: Parang terdiri atas deretan huruf S miring yang sambung-menyambung tanpa terputus pada kemiringan 45 derajat.',
+          'Perbandingan ukuran: Jika Matahari sebesar bola basket, Bumi hanya sebesar biji merica kecil yang berjarak puluhan langkah jauhnya.',
+        glossary: [
+          {
+            word: 'Tata Surya',
+            meaning: 'Kumpulan planet dan benda langit yang berputar mengelilingi Matahari.',
+          },
+          {
+            word: 'Orbit',
+            meaning: 'Jalur lintasan melingkar yang dilewati planet saat mengelilingi Matahari.',
+          },
+        ],
+        question: {
+          prompt: 'Planet manakah yang paling besar di dalam Tata Surya kita?',
+          options: [
+            'Jupiter yang sebesar buah semangka dalam perbandingan kita',
+            'Merkurius yang paling dekat dengan Matahari',
+            'Bulan yang mengelilingi Bumi',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Benar sekali! Jupiter adalah planet terbesar di tata surya kita, jauh lebih besar daripada Bumi.',
+        },
         paragraphs: [
-          'Jika jari Anda menelusuri kain batik bermotif Parang yang dicetak timbul di atas kertas khusus, hal pertama yang terasa adalah barisan garis miring yang berderet rapi dari sudut bawah menuju puncak berlawanan.',
-          'Garis miring itu tersusun oleh lengkungan menyerupai huruf S yang saling bertautan tanpa putus, diiringi tonjolan kecil berbentuk belah ketupat di antara celah lengkungannya. Bentuk tersebut melambangkan ombak samudra yang tak pernah berhenti bergerak menumbuhkan semangat.',
-          'Dalam tradisi keraton, motif ini mengingatkan pemakainya agar memiliki keteguhan sikap dalam menghadapi ujian kehidupan. Keteraturan jarak antar-garisnya menciptakan irama visual maupun rabaan yang amat menenangkan.',
+          'Saat menatap langit malam yang cerah, bintang-bintang tampak seperti taburan garam di atas kain beludru hitam. Padahal di balik titik cahaya mungil itu terdapat planet dan matahari raksasa yang berputar teratur.',
+          'Agar mudah dibayangkan tanpa harus melihat gambar jauh, bayangkan Matahari berukuran sebesar bola basket di tengah lapangan. Maka Bumi tempat kita tinggal hanyalah sebesar sebutir biji lada kecil yang berputar pada orbitnya.',
+          'Planet Merkurius dan Mars berukuran lebih kecil lagi seperti butiran pasir, sedangkan Jupiter sang raksasa gas kira-kira sebesar bola tenis di antara delapan planet lainnya.',
         ],
       },
       {
         id: 'bab-2',
         number: 2,
-        title: 'Lingkaran Empat Penjuru pada Motif Kawung',
+        title: 'Musik dari Cincin Saturnus',
         summary:
-          'Filosofi buah aren yang terbelah empat bagian simetris sebagai lambang pengendalian diri.',
+          'Bagaimana para peneliti mengubah gelombang cahaya planet menjadi alunan nada.',
         marginNote:
-          'Simetri Kawung: Empat kelopak lonjong bertemu pada satu titik pusat kecil, melambangkan empat arah mata angin yang seimbang.',
+          'Cincin Saturnus tersusun dari miliaran bongkahan es berkilau yang berputar seperti piringan musik raksasa.',
+        glossary: [
+          {
+            word: 'Sonifikasi',
+            meaning: 'Cara mengubah angka atau cahaya dari luar angkasa menjadi bunyi yang bisa didengar.',
+          },
+        ],
+        question: {
+          prompt: 'Apa penyusun utama cincin indah milik planet Saturnus?',
+          options: [
+            'Miliaran bongkahan es dan debu batu luar angkasa',
+            'Pita kain sutra berwarna perak',
+            'Tumpukan awan hujan dari lautan Bumi',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Hebat! Cincin Saturnus tersusun dari jutaan hingga miliaran pecahan es dan batu yang mengorbit planetnya.',
+        },
         paragraphs: [
-          'Berbeda dengan Parang yang berbaris miring dinamis, motif Kawung tersusun sangat teratur dalam kisi kotak yang seimbang. Setiap unitnya tampak seperti empat kelopak lonjong buah kolang-kaling yang mengarah keluar dari satu titik pusat kecil.',
-          'Apabila empat kelopak itu diraba berulang kali ke kiri dan kanan, tangan akan merasakan perulangan simetri yang nyaris matematis. Di pusat pertemuan kelopak biasanya terdapat dua titik halus sebagai penyeimbang ruang.',
-          'Filosofi Jawa memaknai empat kelopak ini sebagai pengingat bagi seorang pemimpin atau warga masyarakat untuk menjaga keseimbangan antara pikiran, ucapan, kerja keras, dan empati kepada sesama.',
+          'Tahukah kamu bahwa para ilmuwan luar angkasa suka mengubah foto teleskop menjadi alunan nada yang indah? Teknik seru ini dinamakan sonifikasi agar semua orang, termasuk teman tunanetra, bisa ikut menikmati bentuk galaksi.',
+          'Saat garis pemindai menyentuh cincin es Saturnus yang lebar, terdengar suara dawai tinggi yang berkelip-kelip jernih. Ketika melewati celah kosong di tengah cincin, bunyi sejenak terdiam lalu berlanjut lagi.',
+          'Dengan mendengarkan musik luar angkasa, kita bisa merasakan betapa rapinya tarian planet-planet tanpa pernah saling bertabrakan.',
         ],
       },
       {
         id: 'bab-3',
         number: 3,
-        title: 'Hangatnya Malam di Atas Canting Tembaga',
+        title: 'Kawah Bulan dan Peta Bintang Taktil',
         summary:
-          'Mengenal proses membatik lewat suhu malam panas, bunyi tiupan perajin, dan aroma lilin lebah.',
+          'Membuat bola bulan bertekstur timbul di ruang belajar bersama teman-teman.',
         marginNote:
-          'Aroma Tradisi: Malam batik terbuat dari campuran lilin lebah, damar, dan parafin yang mengeluarkan wangi khas saat dipanaskan di wajan kecil.',
+          'Bulan tidak bercahaya sendiri; ia memantulkan cahaya Matahari dengan lembut ke Bumi di malam hari.',
+        glossary: [
+          {
+            word: 'Kawah',
+            meaning: 'Lekukan berbentuk mangkuk besar di permukaan Bulan akibat jatuhnya batu meteorit.',
+          },
+        ],
+        question: {
+          prompt: 'Mengapa Bulan tampak bersinar terang di langit malam?',
+          options: [
+            'Karena permukaan Bulan memantulkan cahaya dari Matahari',
+            'Karena di dalam Bulan ada ribuan lampu neon',
+            'Karena Bulan terbuat dari api panas',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Tepat! Bulan bersinar karena memantulkan sinar Matahari, bukan memancarkan cahaya sendiri.',
+        },
         paragraphs: [
-          'Di sebuah bengkel batik rumahan, kegiatan berkarya lebih dulu menyapa indera penciuman dan pendengaran sebelum mata menangkap warnanya. Udara hangat dipenuhi wangi lembut lilin lebah yang meleleh di atas kompor kecil.',
-          'Perajin menunduk memegang canting tembaga, meniup ujung ceratnya perlahan untuk menjaga suhu malam tidak terlalu cair, lalu menempelkannya dengan tekanan konstan ke kain katun putih. Terdengar desis tipis saat malam hangat meresap ke pori serat kain.',
-          'Melalui kerja sama komunitas pembatik tuli dan tunanetra di berbagai daerah, tradisi batik kini berkembang menjadi ruang berkarya yang terbuka, menghasilkan motif-motif baru yang lahir dari ketulusan tangan.',
+          'Di ruang sains sekolah, Ibu Guru membawa sebuah bola plastik besar yang ditempeli adonan kertas menyerupai lekukan kawah Bulan. Semua anak bergantian meraba cekungan besar dan dataran halus pada bola tersebut.',
+          'Dulu manusia hanya bisa melihat Bulan dari kejauhan, tetapi kini kita bisa mengenal bentang alamnya dengan jari dan suara. Setiap kawah memiliki nama tokoh ilmuwan dan penjelajah hebat dari seluruh dunia.',
+          'Malam nanti jika langit cerah, cobalah ingat bahwa di atas sana ada tata surya luas yang menunggu untuk dipelajari oleh rasa ingin tahu kita.',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'enam-titik-nada-di-taman-sekolah',
+    accessionCode: 'AN-2026-06',
+    title: 'Enam Titik Nada di Taman Sekolah',
+    subtitle: 'Bermain Tebak Pola Braille dan Bunyi Alat Musik Sederhana',
+    author: 'Kak Tara Wijaya',
+    narrator: 'Suara Cerita Anak Indonesia',
+    category: 'Kreativitas & Seni',
+    ageGroup: '4–6 Tahun',
+    year: 2026,
+    language: 'Indonesia',
+    readingMinutes: 6,
+    audioMinutes: 8,
+    coverImage: '/src/assets/images/cover_simfoni_bunyi_1795675670595.jpg',
+    coverAlt:
+      'Ilustrasi seni cetak minimalis bergambar lingkaran gelombang suara konsentris dan susunan titik timbul berwarna terakota di atas kertas krem hangat.',
+    coverAccentHex: '#78350F',
+    summary:
+      'Cerita ceria tentang klub musik kecil di taman sekolah yang bermain tebak pola kancing timbul dan membuat alat musik dari botol kaca serta biji-bijian.',
+    accessibilityNotes: [
+      'Mengajak anak berhitung 1 sampai 6 sambil mengenal pola taktil',
+      'Cocok untuk aktivitas membaca interaktif bersama orang tua atau guru',
+      'Tersedia unduhan berkas Braille Unicode siap cetak',
+    ],
+    chapters: [
+      {
+        id: 'bab-1',
+        number: 1,
+        title: 'Kancing Kayu dan Kotak Rahasia',
+        summary:
+          'Mira membawa enam kancing kayu halus untuk bermain tebak huruf A sampai C.',
+        marginNote:
+          'Permainan seru: Coba tutup mata dan raba tiga benda berbeda di mejamu, lalu tebak namanya hanya dari sentuhan.',
+        glossary: [
+          {
+            word: 'Pola',
+            meaning: 'Susunan bentuk atau bunyi yang teratur dan mudah dikenali.',
+          },
+        ],
+        question: {
+          prompt: 'Berapa jumlah kancing kayu yang disusun Mira di atas papan?',
+          options: [
+            'Enam kancing kayu dalam dua baris tegak',
+            'Dua puluh kancing berwarna hitam',
+            'Hanya satu kancing besar',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Benar! Enam titik adalah jumlah dasar dalam satu kotak huruf Braille yang sangat mudah diraba.',
+        },
+        paragraphs: [
+          'Di bangku taman sekolah yang sejuk, Mira mengeluarkan sebuah papan kayu kecil berisi enam lubang rapi dan enam kancing halus. Teman-temannya berkumpul melingkar untuk ikut bermain tebak pola rahasia.',
+          'Jika aku taruh satu kancing saja di sudut kiri paling atas, itu huruf A, kata Mira dengan suara ceria. Jika aku tambah satu lagi tepat di bawahnya menjadi dua kancing sejajar, itu berubah menjadi huruf B.',
+          'Anak-anak menutup mata mereka sambil tersenyum dan bergiliran meraba susunan kancing tersebut. Ternyata ujung jari mereka sangat pintar menebak bentuk hanya dalam hitungan detik.',
+        ],
+      },
+      {
+        id: 'bab-2',
+        number: 2,
+        title: 'Marakas Biji Kacang Hijau',
+        summary:
+          'Membuat alat musik perkusi aman dari botol plastik berisi kacang hijau dan beras.',
+        marginNote:
+          'Setiap isi botol menghasilkan bunyi berbeda: beras berbunyi halus seperti hujan, sedangkan kacang hijau berbunyi lebih tegas.',
+        glossary: [
+          {
+            word: 'Perkusi',
+            meaning: 'Alat musik yang dimainkan dengan cara dipukul, diketuk, atau digoyangkan.',
+          },
+        ],
+        question: {
+          prompt: 'Bagaimana cara memainkan alat musik marakas buatan anak-anak?',
+          options: [
+            'Digoyangkan mengikuti irama lagu sehingga bijinya berbunyi',
+            'Ditiup sekuat tenaga dari ujung bawah',
+            'Dipetik senarnya memakai jari',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Betul! Marakas dimainkan dengan cara digoyangkan sehingga menciptakan irama ceria.',
+        },
+        paragraphs: [
+          'Setelah puas menebak huruf, giliran Bima mengeluarkan tiga botol kecil berisi beras, kacang hijau, dan manik kayu. Ketika botol-botol itu digoyangkan, terdengar bunyi srek-srek yang riang seperti marakas.',
+          'Botol berisi beras berbunyi lembut menyerupai desau angin di rumput. Sementara botol berisi manik kayu menghasilkan ketukan renyah yang membuat semua kaki ikut bergoyang.',
+          'Mereka memberi tanda pita bertekstur berbeda pada tutup masing-masing botol. Dengan begitu siapa pun langsung tahu isi botol hanya dengan meraba tutupnya.',
+        ],
+      },
+      {
+        id: 'bab-3',
+        number: 3,
+        title: 'Konser Pagi di Taman Bunga',
+        summary:
+          'Semua teman memainkan lagu sederhana sambil membaca pola kartu timbul bersama.',
+        marginNote:
+          'Bermain musik dan membaca cerita adalah kegiatan yang bisa dinikmati semua anak tanpa kecuali.',
+        glossary: [
+          {
+            word: 'Irama',
+            meaning: 'Ketukan bunyi yang teratur cepat atau lambatnya dalam sebuah lagu.',
+          },
+        ],
+        question: {
+          prompt: 'Apa yang membuat konser taman pagi itu terdengar indah?',
+          options: [
+            'Semua teman bermain bersama mengikuti irama yang kompak',
+            'Mereka memutar suara sirene mobil pemadam',
+            'Semua anak berteriak tanpa aturan',
+          ],
+          correctIndex: 0,
+          explanation:
+            'Tepat! Kekompakan irama dan saling mendengarkan membuat konser kecil mereka merdu sekali.',
+        },
+        paragraphs: [
+          'Pagi itu taman bunga SD Ceria dipenuhi irama ketukan marakas dan nyanyian lagu anak-anak. Mira memberi aba-aba hitungan satu sampai empat sebelum semua teman menggoyangkan botolnya bersama.',
+          'Burung gereja di dahan pohon jambu ikut berkicau seolah memberi tepuk tangan. Pak Penjaga Sekolah tersenyum melihat anak-anak bermain akur dan penuh kreativitas.',
+          'Ketika bel masuk berbunyi, papan enam titik dan botol marakas disimpan kembali di rak kelas. Esok hari mereka berjanji akan menciptakan lagu baru tentang hujan dan pelangi.',
         ],
       },
     ],
