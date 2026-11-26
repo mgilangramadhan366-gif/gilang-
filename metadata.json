@@ -1,0 +1,6 @@
+{
+  "name": "Pustaka Inklusi",
+  "description": "Perpustakaan digital ramah disabilitas dengan pembaca layar terintegrasi, dukungan disleksia, kontras adaptif AAA, dan navigasi papan ketik penuh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
